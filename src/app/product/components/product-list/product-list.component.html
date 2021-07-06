@@ -1,0 +1,101 @@
+<div class="container">
+  <h2 class="hedding">Product List</h2>
+
+<div class="row mb-4">
+  <div class="col-sm-4">
+  <select class="form-control" [(ngModel)]="locatioSearch" (change)="onSelectLocation($event.target.value)">
+    <option disabled selected value=''>-- Please Select Location--</option>
+    <option *ngFor="let option of locations" [ngValue]="option"
+      >{{option}}</option>
+  </select>
+  </div>
+   <div class="col-sm-4">
+  <input type="text" class="form-control flot-left" [(ngModel)]="SearchName" placeholder="Search ProductName">
+  </div>
+  <div class="col-sm-4">
+      <button class="btn btn-primary btn-positions" (click)="createProduct()">Create New Product</button>
+  </div>
+  </div>
+  <table class="table table-condensed mt-4 tables">
+    <thead class="tbody">
+      <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Location</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="productList.length > 0">
+      <tr
+        *ngFor="let data of productList | namePipe: SearchName | paginate: {itemsPerPage:
+        5, currentPage:
+        page, id:
+        'productPage'};">
+        <td>{{data.productId}}</td>
+        <td>{{data.productName}}</td>
+        <td>{{data.description}}</td>
+        <td>{{data.productPrice}}</td>
+        <td>{{data.quantity}}</td>
+        <td>{{data.location}}</td>
+          <td>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="viewProductDetails(data)"> View</button>
+             &nbsp;&nbsp;<button class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+               (click)="editProductDetails(data)"> Edit</button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+<div>
+   <pagination-controls (pageChange)="page = $event" id="productPage">
+   </pagination-controls>
+</div>
+   <div class="modal fade" id="myModal" role="dialog">
+     <div class="modal-dialog">
+
+       <!-- Modal content-->
+       <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">Product Details</h4>
+         </div>
+         <div class="modal-body">
+          <table>
+            <tr>
+              <th class="popup-pading">Product Id:</th>
+              <td class="popup-pading">{{productDetails?.productId}}</td>
+            </tr>
+             <tr>
+               <th class="popup-pading">Product Name:</th>
+               <td class="popup-pading">{{productDetails?.productName}}</td>
+             </tr>
+              <tr>
+                <th class="popup-pading">Description:</th>
+                <td class="popup-pading">{{productDetails?.description}}</td>
+              </tr>
+               <tr>
+                 <th class="popup-pading">Price:</th>
+                 <td class="popup-pading">{{productDetails?.productPrice}}</td>
+               </tr>
+                <tr>
+                  <th class="popup-pading">Quantity:</th>
+                  <td class="popup-pading">{{productDetails?.quantity}}</td>
+                </tr>
+                 <tr>
+                   <th class="popup-pading">Location:</th>
+                   <td class="popup-pading">{{productDetails?.location}}</td>
+                 </tr>
+          </table>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+       </div>
+
+     </div>
+   </div>
+</div>
+  
+<router-outlet></router-outlet>

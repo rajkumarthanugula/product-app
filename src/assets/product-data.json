@@ -1,0 +1,50 @@
+{"productList": [
+    {
+    "productId": 10001,
+    "productName": "BAT",
+    "productPrice": "8000",
+    "description": "BATS",
+    "quantity": 100,
+    "location": "Hyderabad"
+},
+    {
+        "productId": 10002,
+        "productName": "TV",
+        "productPrice": "10000",
+        "description": "Telivision",
+        "quantity": 1500,
+        "location": "Chennai"
+    },
+    {
+        "productId": 10003,
+        "productName": "Mobile",
+        "productPrice": "15000",
+        "description": "Mobiles",
+        "quantity": 100,
+        "location": "Chennai"
+    },
+    {
+        "productId": 10004,
+        "productName": "windows",
+        "productPrice": "200",
+        "description": "windows",
+        "quantity": 2000,
+        "location": "Pune"
+    },
+    {
+        "productId": 10005,
+        "productName": "doos",
+        "productPrice": "100",
+        "description": "Doors",
+        "quantity": 15000,
+        "location": "Bangloor"
+    },
+    {
+        "productId": 10006,
+        "productName": "Mats",
+        "productPrice": "100",
+        "description": "Mats",
+        "quantity": 15000,
+        "location": "Pune"
+    }
+]}
